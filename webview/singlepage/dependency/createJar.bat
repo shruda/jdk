@@ -1,0 +1,4 @@
+SET FILENAME=html
+SET DIRECTORY=topack
+
+jar cf %FILENAME%.jar -C %DIRECTORY% .
