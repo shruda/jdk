@@ -1,8 +1,9 @@
-package webview;
+package tooltiptest;
 
 import java.awt.BorderLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
 import javax.swing.JButton;
@@ -82,7 +83,14 @@ public class TooltipTestFXSwing
 		Platform.runLater(() ->
 		{
 			WebView webView = new WebView();
-			webView.getEngine().load(Paths.get("dependency/tooltip.html").toUri().toString());
+			try
+			{
+				webView.getEngine().load(TooltipTestFXSwing.class.getResource("tooltip.html").toURI().toString());
+			}
+			catch (URISyntaxException e1)
+			{
+				e1.printStackTrace();
+			}
 
 			Scene scene = new Scene(webView, 800, 600);
 			jfxPanel.setScene(scene);
